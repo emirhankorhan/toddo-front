@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Note from "../note/Note"
 import AppContext from '../context/AppContext';
 import "./notelist.css"
@@ -103,7 +103,7 @@ function NoteList() {
 
                   <li>
                     <a
-                      href=""
+                      href="/gg"
                       class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-400 hover:bg-[#15161a] hover:text-white"
                     >
                       Takvim
@@ -115,7 +115,7 @@ function NoteList() {
 
             <li>
               <a
-                href=""
+                href="/awda"
                 class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-400 hover:bg-[#15161a] hover:text-white"
               >
                 Bildirim Gönder
@@ -124,7 +124,7 @@ function NoteList() {
 
             <li>
               <a
-                href=""
+                href="/awda"
                 class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-400 hover:bg-[#15161a] hover:text-white"
               >
                 Yardım
@@ -157,7 +157,7 @@ function NoteList() {
                 <ul class="mt-2 space-y-1 px-4">
                   <li>
                     <a
-                      href=""
+                      href="/setting"
                       class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-400 hover:bg-[#15161a] hover:text-white"
                     >
                       Ayarlar
@@ -166,7 +166,7 @@ function NoteList() {
 
                   <li>
                     <a
-                      href=""
+                      href="/ia"
                       class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-400 hover:bg-[#15161a] hover:text-white"
                     >
                       Geri Bildirim
@@ -228,7 +228,7 @@ function NoteList() {
             <div
               className="overflow-hidden rounded-md border border-gray-700"
             >
-              {taskType == "active" ? <textarea
+              {taskType === "active" ? <textarea
                 className="w-full resize-none border-none px-4 pt-4 align-top outline-none bg-[#1e1f24] text-white text-sm"
                 rows="2"
                 placeholder="Görev eklemek için dokun..."

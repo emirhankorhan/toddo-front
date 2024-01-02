@@ -23,7 +23,7 @@ const Login = () => {
     const handleLogin = async () => {
         try {
             // Axios ile POST isteği gönder
-            const response = await axios.post('http://sleek-selection-production.up.railway.app/api/users/login', {
+            const response = await axios.post('https://sleek-selection-production.up.railway.app/api/users/login', {
                 userName: username,
                 userPassword: password,
             }, {

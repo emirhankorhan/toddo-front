@@ -2,7 +2,7 @@ import axios from "axios"
 
 class NoteService {
     constructor() {
-        this.baseUrl = "http://sleek-selection-production.up.railway.app/api/users/paw"
+        this.baseUrl = "https://sleek-selection-production.up.railway.app/api/users/paw"
     }
 
     async updateUserPaw(userId, paw) {

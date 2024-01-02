@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+
+import { useEffect } from 'react';
+import Login from './component/Login/Login';
+import Register from './component/Login/Register';
+import NoteList from './component/notelist/NoteList';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 
 function App() {
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const userId = parseInt(sessionStorage.getItem('userId'), 10);
+    const currentPath = window.location.pathname;
+
+    if ((isNaN(userId) || userId === null) && currentPath === '/notelist') {
+      navigate('/');
+    }
+  }, [navigate]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Routes>
+        <Route path='/' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/notelist' element={<NoteList />} />
+      </Routes>
     </div>
   );
 }

@@ -52,7 +52,7 @@ export const AppProvider = ({ children }) => {
     } catch (error) {
       console.error('Notları alırken bir hata oluştu:', error);
     }
-  }, [taskType]);
+  }, [taskType, noteService]);
 
   useEffect(() => {
     if (userId) {

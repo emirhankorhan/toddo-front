@@ -7,7 +7,7 @@ const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
 
-  const noteService = new NoteService();
+  const noteService = useMemo(() => new NoteService(), []);
   const userService = new UserService();
   const [notes, setNotes] = useState([]);
 

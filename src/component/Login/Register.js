@@ -10,13 +10,13 @@ const Register = () => {
         userPassword: "",
         userSalt: ""
     });
-    const [userPassword, setUserPassword] = useState('');
+
     const [passwordType, setPasswordType] = useState("password");
     const [passwordDanger, setPasswordDanger] = useState(false);
     const navigate = useNavigate();
 
     const passwordTypeFunc = () => {
-        if (passwordType == "password") {
+        if (passwordType === "password") {
             setPasswordType("text")
         } else {
             setPasswordType("password")
@@ -67,7 +67,7 @@ const Register = () => {
                     <input className='username-input' placeholder='Kullanıcı adı' type="text" id='userName' name='userName' value={user.userName} onChange={regChange} />
                     <div className="pass-input">
                         <input className='password' placeholder='Şifre' type={passwordType} id='userPassword' name='userPassword' value={user.userPassword} onChange={regChange} />
-                        <button onClick={passwordTypeFunc} className='eye-button'>{passwordType == "password" ? <i class="fa-regular fa-eye"></i> : <i class="fa-regular fa-eye-slash"></i>}</button>
+                        <button onClick={passwordTypeFunc} className='eye-button'>{passwordType === "password" ? <i class="fa-regular fa-eye"></i> : <i class="fa-regular fa-eye-slash"></i>}</button>
                     </div>
                     {passwordDanger ? <div>Lütfen 10 karakterden uzun bir şifre girin!</div> : ""}
                   

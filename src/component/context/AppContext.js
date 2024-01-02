@@ -36,20 +36,35 @@ export const AppProvider = ({ children }) => {
     }));
   }, [userId]);
 
-  const getAllNotes = async (userId) => {
+  // const getAllNotes = async (userId) => {
+  //   try {
+  //     const data = await noteService.getAllNotes(userId, taskType);
+  //     setNotes(data);
+  //   } catch (error) {
+  //     console.error('Notları alırken bir hata oluştu:', error);
+  //   }
+  // };
+
+  const getAllNotes = useCallback(async (userId) => {
     try {
       const data = await noteService.getAllNotes(userId, taskType);
       setNotes(data);
     } catch (error) {
       console.error('Notları alırken bir hata oluştu:', error);
     }
-  };
+  }, [taskType]);
 
   useEffect(() => {
     if (userId) {
       getAllNotes(userId);
     }
-  }, [userId, taskType, updatedFunc]);
+  }, [userId, getAllNotes, updatedFunc]);
+
+  // useEffect(() => {
+  //   if (userId) {
+  //     getAllNotes(userId);
+  //   }
+  // }, [userId, taskType, updatedFunc]);
 
   const postOneNote = (note) => {
     noteService.postOneNote(note).then((response) => setNotes([...notes, response]))

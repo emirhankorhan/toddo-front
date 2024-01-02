@@ -11,7 +11,7 @@ const Login = () => {
     const [passwordType, setPasswordType] = useState("password");
 
     const passwordTypeFunc = () => {
-        if (passwordType == "password") {
+        if (passwordType === "password") {
             setPasswordType("text")
         }else{
             setPasswordType("password")
@@ -58,7 +58,7 @@ const Login = () => {
                     <input className='username-input' placeholder='Kullanıcı adı giriniz' type="text" id='userName' name='userName' value={username} onChange={(e) => setUsername(e.target.value)} />
                     <div className="pass-input">
                         <input className='password' placeholder='Şifre giriniz' type={passwordType} id='userPassword' name='userPassword' value={password} onChange={(e) => setPassword(e.target.value)} />
-                        <button onClick={passwordTypeFunc} className='eye-button'>{passwordType == "password" ? <i class="fa-regular fa-eye"></i> : <i class="fa-regular fa-eye-slash"></i>}</button>
+                        <button onClick={passwordTypeFunc} className='eye-button'>{passwordType === "password" ? <i class="fa-regular fa-eye"></i> : <i class="fa-regular fa-eye-slash"></i>}</button>
                     </div>
 
                     <button onClick={handleLogin}>Giriş Yap</button>

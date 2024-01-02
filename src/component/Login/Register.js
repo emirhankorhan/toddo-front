@@ -35,7 +35,7 @@ const Register = () => {
     const handleRegister = async () => {
         if (user.userPassword.length >= 8) {
             try {
-                const response = await axios.post('http://localhost:8082/api/users/register', user);
+                const response = await axios.post('http://sleek-selection-production.up.railway.app/api/users/register', user);
 
                 if (response.status === 200) {
                     navigate(`/`);

@@ -2,7 +2,7 @@ import axios from "axios"
 
 class NoteService {
     constructor() {
-        this.baseUrl = "http://localhost:8082/api/notes"
+        this.baseUrl = "http://sleek-selection-production.up.railway.app/api/notes"
     }
 
     async getAllNotes(userId, taskType) {

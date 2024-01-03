@@ -46,7 +46,7 @@ const Login = () => {
                       <form className="flex flex-col w-full h-full pb-6 text-center bg-white rounded-3xl">
                         <h3 className="mb-3 text-4xl font-extrabold text-dark-grey-900">Giriş Yap</h3>
                         <p className="mb-4 text-grey-700">PawPaw'ı kullanabilmek için hemen giriş yap</p>
-                        <a className="flex items-center justify-center w-full py-4 mb-6 text-sm font-medium transition duration-300 rounded-2xl text-grey-900 bg-grey-300 hover:bg-grey-400 focus:ring-4 focus:ring-grey-300">
+                        <a href='/google' className="flex items-center justify-center w-full py-4 mb-6 text-sm font-medium transition duration-300 rounded-2xl text-grey-900 bg-grey-300 hover:bg-grey-400 focus:ring-4 focus:ring-grey-300">
                           <img className="h-5 mr-2" src="https://raw.githubusercontent.com/Loopple/loopple-public-assets/main/motion-tailwind/img/logos/logo-google.png" alt="" />
                           Sign in with Google (Aktif değil!)
                         </a>

@@ -69,7 +69,7 @@ const Register = () => {
                         <input className='password' placeholder='Şifre' type={passwordType} id='userPassword' name='userPassword' value={user.userPassword} onChange={regChange} />
                         <button onClick={passwordTypeFunc} className='eye-button'>{passwordType === "password" ? <i class="fa-regular fa-eye"></i> : <i class="fa-regular fa-eye-slash"></i>}</button>
                     </div>
-                    {passwordDanger ? <div>Lütfen 10 karakterden uzun bir şifre girin!</div> : ""}
+                    {passwordDanger ? <div>Şifreniz en az 8 karakter olmalı!</div> : ""}
                   
 
 
@@ -77,7 +77,7 @@ const Register = () => {
                 </div>
                 <div className="login-route">
                     <div className="log-text">Zaten bir hesabın var mı?</div>
-                    <a href='/login' className="log-tag">Giriş Yap</a>
+                    <a href='/' className="log-tag">Giriş Yap</a>
                 </div>
             </div>
         </div>

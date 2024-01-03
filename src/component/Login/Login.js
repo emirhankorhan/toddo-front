@@ -8,16 +8,6 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-    const [passwordType, setPasswordType] = useState("password");
-    const passwordTypeFunc = () => {
-        if (passwordType === "password") {
-            setPasswordType("text")
-        }else{
-            setPasswordType("password")
-        }
-        
-    }
-
 
     const handleLogin = async () => {
         try {
@@ -70,7 +60,7 @@ const Login = () => {
                         <input autoComplete='off' placeholder='Kullanıcı adı giriniz' type="text" id='userName' name='userName' value={username} onChange={(e) => setUsername(e.target.value)} className="flex items-center bg-gray-100 w-full px-5 py-4 mr-2 text-sm font-medium outline-none focus:bg-grey-400 mb-7 placeholder:text-grey-700 bg-grey-200 text-dark-grey-900 rounded-2xl" />
                         <label htmlFor="password" className="mb-2 text-sm text-start text-grey-900">Şifre</label>
                        
-                        <input autoComplete='off' placeholder='Şifre giriniz' type={passwordType} id='userPassword' name='userPassword' value={password} onChange={(e) => setPassword(e.target.value)}  className="flex items-center bg-gray-100 w-full px-5 py-4 mb-5 mr-2 text-sm font-medium outline-none focus:bg-grey-400 placeholder:text-grey-700 bg-grey-200 text-dark-grey-900 rounded-2xl" />
+                        <input autoComplete='off' placeholder='Şifre giriniz' type='password' id='userPassword' name='userPassword' value={password} onChange={(e) => setPassword(e.target.value)}  className="flex items-center bg-gray-100 w-full px-5 py-4 mb-5 mr-2 text-sm font-medium outline-none focus:bg-grey-400 placeholder:text-grey-700 bg-grey-200 text-dark-grey-900 rounded-2xl" />
                         <div className="flex flex-row justify-between mb-8">
                           <label className="relative inline-flex items-center mr-3 cursor-pointer select-none">
                             <input type="checkbox" checked value="" className="sr-only peer" />
@@ -79,7 +69,7 @@ const Login = () => {
                             </div>
                             
                           </label>
-                          <a href="javascript:void(0)" className="mr-4 text-sm font-medium text-purple-blue-500">Şifreni mi Unuttun? Emirhan'dan yardım iste!</a>
+                          <a href="/xd" className="mr-4 text-sm font-medium text-purple-blue-500">Şifreni mi Unuttun? Emirhan'dan yardım iste!</a>
                         </div>
                       
                       

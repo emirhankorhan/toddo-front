@@ -63,7 +63,7 @@ function NoteList() {
 
           <ul class="mt-6 space-y-1">
             <li>
-              <a href="/q" class="block rounded-lg bg-[#15161a] px-4 py-2 text-sm font-medium text-white">
+              <a href="/notelist" class="block rounded-lg bg-[#15161a] px-4 py-2 text-sm font-medium text-white">
                 Görevler
               </a>
             </li>
@@ -200,9 +200,9 @@ function NoteList() {
 
             <div>
               <p class="text-xs">
-                <strong class="block font-medium text-white">{userName} {userId}</strong>
+                <strong class="block font-medium text-white">{userName}</strong>
 
-                <span className='text-white'>zort </span>
+                <span className='text-white'>Kişisel PawPaw Hesabı</span>
               </p>
             </div>
           </div>

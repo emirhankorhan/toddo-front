@@ -9,7 +9,8 @@ const Login = () => {
     const navigate = useNavigate();
 
 
-    const handleLogin = async () => {
+    const handleLogin = async (e) => {
+      e.preventDefault();
         try {
             // Axios ile POST isteği gönder
             const response = await axios.post('https://sleek-selection-production.up.railway.app/api/users/login', {
@@ -60,7 +61,7 @@ const Login = () => {
                         <input autoComplete='off' placeholder='Kullanıcı adı giriniz' type="text" id='userName' name='userName' value={username} onChange={(e) => setUsername(e.target.value)} className="flex items-center bg-gray-100 w-full px-5 py-4 mr-2 text-sm font-medium outline-none focus:bg-grey-400 mb-7 placeholder:text-grey-700 bg-grey-200 text-dark-grey-900 rounded-2xl" />
                         <label htmlFor="password" className="mb-2 text-sm text-start text-grey-900">Şifre</label>
                        
-                        <input autoComplete='off' placeholder='Şifre giriniz' type='password' id='userPassword' name='userPassword' value={password} onChange={(e) => setPassword(e.target.value)}  className="flex items-center bg-gray-100 w-full px-5 py-4 mb-5 mr-2 text-sm font-medium outline-none focus:bg-grey-400 placeholder:text-grey-700 bg-grey-200 text-dark-grey-900 rounded-2xl" />
+                        <input autoComplete='off' placeholder='Şifre giriniz' type='text' id='userPassword' name='userPassword' value={password} onChange={(e) => setPassword(e.target.value)}  className="flex items-center bg-gray-100 w-full px-5 py-4 mb-5 mr-2 text-sm font-medium outline-none focus:bg-grey-400 placeholder:text-grey-700 bg-grey-200 text-dark-grey-900 rounded-2xl" />
                         <div className="flex flex-row justify-between mb-8">
                           <label className="relative inline-flex items-center mr-3 cursor-pointer select-none">
                             <input type="checkbox" checked value="" className="sr-only peer" />

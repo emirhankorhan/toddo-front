@@ -101,6 +101,9 @@ export const AppProvider = ({ children }) => {
     e.preventDefault();
     if (note.text.trim().length !== 0) {
       postOneNote(note);
+      const updatePawValue = await userService.updateUserPaw(userId, 1);
+      sessionStorage.setItem('userPaw', updatePawValue);
+      setUserPaw(updatePawValue);
     }
     setNote({
       noteId: 0,
@@ -112,9 +115,7 @@ export const AppProvider = ({ children }) => {
 
 
 
-    const updatePawValue = await userService.updateUserPaw(userId, 1);
-    sessionStorage.setItem('userPaw', updatePawValue);
-    setUserPaw(updatePawValue);
+
   }
 
 

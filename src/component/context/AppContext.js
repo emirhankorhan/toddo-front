@@ -1,6 +1,7 @@
 import { createContext, useCallback, useMemo, useEffect, useState } from "react";
 import NoteService from "../../service/NoteService";
 import UserService from "../../service/UserService";
+import PartnersService from "../../service/PartnersService";
 
 
 const AppContext = createContext();
@@ -8,16 +9,31 @@ const AppContext = createContext();
 export const AppProvider = ({ children }) => {
 
   const noteService = useMemo(() => new NoteService(), []);
+  const partnersService = useMemo(() => new PartnersService(), []);
   const userService = new UserService();
   const [notes, setNotes] = useState([]);
 
   const [userPaw, setUserPaw] = useState(sessionStorage.getItem('userPaw'));
   const [taskType, setTaskType] = useState("active");
   const [filteredNotes, setFilteredNotes] = useState([]);
+  const [partnerTask, setPartnerTask] = useState([]);
 
   const [userId, setUserId] = useState(0);
   const [userName, setUserName] = useState("");
   const [updatedFunc, setUpdatedFunc] = useState("");
+
+  const getAllPartners = useCallback(async () => {
+    try {
+      const data = await partnersService.getAllPartners();
+      setPartnerTask(data);
+    } catch (error) {
+      console.error('Ortak görevleri alırken bir hata oluştu:', error);
+    }
+  }, [partnersService]);
+
+  useEffect(() => {
+    getAllPartners();
+  }, [getAllPartners]);
 
 
 
@@ -203,7 +219,8 @@ export const AppProvider = ({ children }) => {
     setUserName,
     completedFunc,
     archivedFunc,
-    activedFunc
+    activedFunc,
+    partnerTask
   };
 
   return <AppContext.Provider value={values}>{children}</AppContext.Provider>;

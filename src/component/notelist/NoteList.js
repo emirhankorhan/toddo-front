@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Note from "../note/Note"
 import AppContext from '../context/AppContext';
 import "./notelist.css"
@@ -22,11 +22,13 @@ function NoteList() {
     setUserId,
     completedFunc,
     archivedFunc,
-    activedFunc
+    activedFunc,
+    partnerTask
   } = useContext(AppContext);
 
   const navigate = useNavigate();
   const today = new Date().toISOString().slice(0, 10);
+  const [partnerTaskDiv, setPartnerTaskDiv] = useState(true);
 
   const exitFunc = () => {
     sessionStorage.removeItem('userId');
@@ -49,17 +51,30 @@ function NoteList() {
     setUserName(storedUserName);
   }, [storedUserName, setUserName]);
 
+  const exitPartnerTask = () => setPartnerTaskDiv(false)
+  const enterPartnerTask = () => setPartnerTaskDiv(true)
+
 
 
 
   return (
-    <div className="body-cont">
+    <div className="body-cont relative">
       <div class="flex h-screen flex-col justify-between w-1/5 bg-[#1e1f24]">
         <div class="px-4 py-6">
+          <div className='flex h-10 w-full'>
           <div class="flex h-10 w-20 items-center justify-center rounded-lg bg-gray-100 text-xs">
             <div className='h-10 w-8 flex text-lg text-[#6763fe] justify-center items-center'><i class="fa-solid fa-paw"></i></div>
             <div className='h-10 w-8 flex text-sm font-bold text-gray-700 justify-center items-center'>{userPaw == null || NaN ? paww : userPaw}</div>
           </div>
+
+          <div onClick={enterPartnerTask} class="flex h-10 w-36 items-center justify-center rounded-lg ml-4 bg-gray-100 text-xs">
+            <div className='h-10 w-8 flex text-lg text-gray-700 justify-end items-center'><i class="fa-solid fa-handshake-simple"></i></div>
+            <div className='h-10 w-28 flex select-none cursor-pointer text-sm font-bold text-gray-700 justify-center items-center'>Ortak Görevler</div>
+          </div>
+          </div>
+          
+
+          
 
           <ul class="mt-6 space-y-1">
             <li>
@@ -328,6 +343,17 @@ function NoteList() {
               />)}
         </div>
       </div>
+      {partnerTaskDiv ? <div className='w-full h-full bg-black/70 flex items-center justify-center fixed top-0 left-0'>
+        <div className='w-1/2 h-1/2 bg-white rounded-lg'>
+          <div className='w-full h-12 flex items-center justify-end'>
+            <button onClick={exitPartnerTask} className="w-8 h-8 mr-4 ease-in duration-100 hover:text-white cursor-pointer flex items-center justify-center hover:bg-red-600 rounded-full text-black"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+          {partnerTask.map((task, index) => <div key={index} className=''>
+          <div className="">{task.howPaw}</div>
+            <div className="">{task.partnerText}</div>
+          </div>)}
+        </div>
+      </div> : ""}
     </div>
   )
 }

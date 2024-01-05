@@ -1,13 +1,13 @@
 import axios from "axios"
 
-class NoteService {
+class PartnerService {
     constructor() {
         this.baseUrl = "https://sleek-selection-production.up.railway.app/api/partners"
     }
 
-    async getAllNotes() {
+    async getAllPartners() {
         return await axios.get(this.baseUrl).then((response) => response.data);
     }
 }
 
-export default NoteService;
+export default PartnerService;

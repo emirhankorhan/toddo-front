@@ -21,9 +21,9 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path='/' element={<NoteList />} />
+        <Route path='/' element={<Login />} />
         <Route path='/register' element={<Register />} />
-        <Route path='/notelist' element={<Register />} />
+        <Route path='/notelist' element={<NoteList />} />
       </Routes>
     </div>
   );

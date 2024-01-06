@@ -56,7 +56,14 @@ function NoteList() {
     setUserName(storedUserName);
   }, [storedUserName, setUserName]);
 
-  const exitPartnerTask = () => setPartnerTaskDiv(false)
+  const exitPartnerTask = () => {setPartnerTaskDiv(false)
+    setNote({
+      noteId: 0,
+      userId: userId,
+      text: "",
+      date: "",
+      isCompleted: "active"
+    });}
   const enterPartnerTask = () => setPartnerTaskDiv(true)
   const partnersClick = (partnerText) => {
     setPartnerClick(true)

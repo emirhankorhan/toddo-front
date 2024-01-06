@@ -248,8 +248,8 @@ function NoteList() {
         {/*  üstteki tab bölümü */}
         <div className='w-3/4 h-28 flex items-center justify-start'>
           {taskType.includes("active") ? <button className='py-2 px-4 bg-[#282736] border border-[#373580] rounded-md text-sm mr-4 text-[#6763fe]'>Etkin</button> : <button onClick={() => effectiveButton(["active", "partner"])} className='py-2 px-4 bg-[#1e1f24] rounded-md text-sm mr-4 border border-[#1e1f24] text-white'>Etkin</button>}
-          {taskType === "completed" ? <button className='py-2 px-4 bg-[#282736] border border-[#373580] rounded-md text-sm mr-4 text-[#6763fe]'>Tamamlandı</button> : <button onClick={() => effectiveButton(["completed"])} className='py-2 px-4 bg-[#1e1f24] rounded-md text-sm mr-4 border border-[#1e1f24] text-white'>Tamamlandı</button>}
-          {taskType === "archived" ? <button className='py-2 px-4 bg-[#282736] border border-[#373580] rounded-md text-sm mr-4 text-[#6763fe]'>Arşiv</button> : <button onClick={() => effectiveButton(["archived"])} className='py-2 px-4 bg-[#1e1f24] rounded-md text-sm mr-4 border border-[#1e1f24] text-white'>Arşiv</button>}
+          {taskType.includes("completed") ? <button className='py-2 px-4 bg-[#282736] border border-[#373580] rounded-md text-sm mr-4 text-[#6763fe]'>Tamamlandı</button> : <button onClick={() => effectiveButton(["completed"])} className='py-2 px-4 bg-[#1e1f24] rounded-md text-sm mr-4 border border-[#1e1f24] text-white'>Tamamlandı</button>}
+          {taskType.includes("archived") ? <button className='py-2 px-4 bg-[#282736] border border-[#373580] rounded-md text-sm mr-4 text-[#6763fe]'>Arşiv</button> : <button onClick={() => effectiveButton(["archived"])} className='py-2 px-4 bg-[#1e1f24] rounded-md text-sm mr-4 border border-[#1e1f24] text-white'>Arşiv</button>}
         </div>
 
 
@@ -262,7 +262,7 @@ function NoteList() {
             <div
               className="overflow-hidden rounded-md border border-gray-700"
             >
-              {taskType === "active" ? <textarea
+              {taskType.includes("active") ? <textarea
                 className="w-full resize-none border-none px-4 pt-4 align-top outline-none bg-[#1e1f24] text-white text-sm"
                 rows="2"
                 placeholder="Görev eklemek için dokun..."

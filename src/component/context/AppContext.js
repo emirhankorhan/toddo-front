@@ -146,8 +146,7 @@ export const AppProvider = ({ children }) => {
     });
   }
 
-  const partnerKabul = async (e) => {
-    e.preventDefault();
+  const partnerKabul = async () => {
     postOneNote(note);
     const updatePawValue = await userService.updateUserPaw(userId, 1);
     sessionStorage.setItem('userPaw', updatePawValue);

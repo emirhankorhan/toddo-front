@@ -14,9 +14,13 @@ export const AppProvider = ({ children }) => {
   const [notes, setNotes] = useState([]);
 
   const [userPaw, setUserPaw] = useState(sessionStorage.getItem('userPaw'));
-  const [taskType, setTaskType] = useState("active");
+  const [taskType, setTaskType] = useState(["active", "partner"]);
   const [filteredNotes, setFilteredNotes] = useState([]);
-  const [partnerTask, setPartnerTask] = useState([]);
+  const [partnerTask, setPartnerTask] = useState([
+    {id: 1,
+    partnerText: "ıdjs9ujds",
+  howPaw: 30}
+  ]);
 
   const [userId, setUserId] = useState(0);
   const [userName, setUserName] = useState("");

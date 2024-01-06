@@ -23,12 +23,16 @@ function NoteList() {
     completedFunc,
     archivedFunc,
     activedFunc,
-    partnerTask
+    partnerTask,
+    setNote
   } = useContext(AppContext);
 
   const navigate = useNavigate();
   const today = new Date().toISOString().slice(0, 10);
-  const [partnerTaskDiv, setPartnerTaskDiv] = useState(true);
+  const [partnerTaskDiv, setPartnerTaskDiv] = useState(false);
+  const [partnerClick, setPartnerClick] = useState(false);
+
+  
 
   const exitFunc = () => {
     sessionStorage.removeItem('userId');
@@ -53,6 +57,20 @@ function NoteList() {
 
   const exitPartnerTask = () => setPartnerTaskDiv(false)
   const enterPartnerTask = () => setPartnerTaskDiv(true)
+  const partnersClick = (partnerText) => {
+    setPartnerClick(true)
+    setNote({
+      noteId: 0,
+      userId: userId,
+      text: partnerText,
+      date: "",
+      isCompleted: "partner"
+    });
+  }
+
+  const partnersConf = () => {
+    // Gelen değerleri note state'ine işle
+   };
 
 
 
@@ -228,9 +246,9 @@ function NoteList() {
 
         {/*  üstteki tab bölümü */}
         <div className='w-3/4 h-28 flex items-center justify-start'>
-          {taskType === "active" ? <button className='py-2 px-4 bg-[#282736] border border-[#373580] rounded-md text-sm mr-4 text-[#6763fe]'>Etkin</button> : <button onClick={() => effectiveButton("active")} className='py-2 px-4 bg-[#1e1f24] rounded-md text-sm mr-4 border border-[#1e1f24] text-white'>Etkin</button>}
-          {taskType === "completed" ? <button className='py-2 px-4 bg-[#282736] border border-[#373580] rounded-md text-sm mr-4 text-[#6763fe]'>Tamamlandı</button> : <button onClick={() => effectiveButton("completed")} className='py-2 px-4 bg-[#1e1f24] rounded-md text-sm mr-4 border border-[#1e1f24] text-white'>Tamamlandı</button>}
-          {taskType === "archived" ? <button className='py-2 px-4 bg-[#282736] border border-[#373580] rounded-md text-sm mr-4 text-[#6763fe]'>Arşiv</button> : <button onClick={() => effectiveButton("archived")} className='py-2 px-4 bg-[#1e1f24] rounded-md text-sm mr-4 border border-[#1e1f24] text-white'>Arşiv</button>}
+          {taskType === "active" ? <button className='py-2 px-4 bg-[#282736] border border-[#373580] rounded-md text-sm mr-4 text-[#6763fe]'>Etkin</button> : <button onClick={() => effectiveButton(["active", "partner"])} className='py-2 px-4 bg-[#1e1f24] rounded-md text-sm mr-4 border border-[#1e1f24] text-white'>Etkin</button>}
+          {taskType === "completed" ? <button className='py-2 px-4 bg-[#282736] border border-[#373580] rounded-md text-sm mr-4 text-[#6763fe]'>Tamamlandı</button> : <button onClick={() => effectiveButton(["completed"])} className='py-2 px-4 bg-[#1e1f24] rounded-md text-sm mr-4 border border-[#1e1f24] text-white'>Tamamlandı</button>}
+          {taskType === "archived" ? <button className='py-2 px-4 bg-[#282736] border border-[#373580] rounded-md text-sm mr-4 text-[#6763fe]'>Arşiv</button> : <button onClick={() => effectiveButton(["archived"])} className='py-2 px-4 bg-[#1e1f24] rounded-md text-sm mr-4 border border-[#1e1f24] text-white'>Arşiv</button>}
         </div>
 
 
@@ -348,9 +366,16 @@ function NoteList() {
           <div className='w-full h-12 flex items-center justify-end'>
             <button onClick={exitPartnerTask} className="w-8 h-8 mr-4 ease-in duration-100 hover:text-white cursor-pointer flex items-center justify-center hover:bg-red-600 rounded-full text-black"><i class="fa-solid fa-xmark"></i></button>
           </div>
-          {partnerTask.map((task, index) => <div key={index} className=''>
-          <div className="">{task.howPaw}</div>
-            <div className="">{task.partnerText}</div>
+          {partnerTask.map((task, index) => <div key={index} className='w-full h-12 flex border-b border-gray-200'>
+          <div className="h-12 w-1/6 flex">
+          <div className='h-12 w-12 flex text-lg text-[#6763fe] justify-end items-center'><i class="fa-solid fa-paw"></i></div>
+            <div className='h-12 w-8 flex text-sm font-bold text-gray-700 justify-center items-center'>{task.howPaw}</div>
+          </div>
+            <div className="w-4/6 h-12 flex items-center text-sm">{task.partnerText}</div>
+            <div className="w-1/6 h-12 flex items-center justify-center">
+              <button onClick={() => partnersClick(task.partnerText)} className='w-24 h-8 bg-[#424bf7] text-white text-sm rounded-md'>Kabul Et</button>
+              {partnerClick ? <button onClick={partnersConf} className='bg-black text-white'>Onay</button> : ""}
+            </div>
           </div>)}
         </div>
       </div> : ""}

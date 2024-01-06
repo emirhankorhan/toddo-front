@@ -24,7 +24,8 @@ function NoteList() {
     archivedFunc,
     activedFunc,
     partnerTask,
-    setNote
+    setNote,
+    partnerKabul
   } = useContext(AppContext);
 
   const navigate = useNavigate();
@@ -69,7 +70,7 @@ function NoteList() {
   }
 
   const partnersConf = () => {
-    // Gelen değerleri note state'ine işle
+    partnerKabul();
    };
 
 
@@ -246,7 +247,7 @@ function NoteList() {
 
         {/*  üstteki tab bölümü */}
         <div className='w-3/4 h-28 flex items-center justify-start'>
-          {taskType === "active" ? <button className='py-2 px-4 bg-[#282736] border border-[#373580] rounded-md text-sm mr-4 text-[#6763fe]'>Etkin</button> : <button onClick={() => effectiveButton(["active", "partner"])} className='py-2 px-4 bg-[#1e1f24] rounded-md text-sm mr-4 border border-[#1e1f24] text-white'>Etkin</button>}
+          {taskType.includes("active") ? <button className='py-2 px-4 bg-[#282736] border border-[#373580] rounded-md text-sm mr-4 text-[#6763fe]'>Etkin</button> : <button onClick={() => effectiveButton(["active", "partner"])} className='py-2 px-4 bg-[#1e1f24] rounded-md text-sm mr-4 border border-[#1e1f24] text-white'>Etkin</button>}
           {taskType === "completed" ? <button className='py-2 px-4 bg-[#282736] border border-[#373580] rounded-md text-sm mr-4 text-[#6763fe]'>Tamamlandı</button> : <button onClick={() => effectiveButton(["completed"])} className='py-2 px-4 bg-[#1e1f24] rounded-md text-sm mr-4 border border-[#1e1f24] text-white'>Tamamlandı</button>}
           {taskType === "archived" ? <button className='py-2 px-4 bg-[#282736] border border-[#373580] rounded-md text-sm mr-4 text-[#6763fe]'>Arşiv</button> : <button onClick={() => effectiveButton(["archived"])} className='py-2 px-4 bg-[#1e1f24] rounded-md text-sm mr-4 border border-[#1e1f24] text-white'>Arşiv</button>}
         </div>

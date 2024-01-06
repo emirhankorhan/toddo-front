@@ -37,7 +37,8 @@ function Note({ note, deleteFunc, completedFunc, activedFunc, archivedFunc, task
     <div className='w-3/4 bg-[#1e1f24] hover:bg-[#24252b] duration-300 h-auto flex rounded-md mb-2'>
       <div className='w-[8%] h-auto flex items-center justify-center'>
         {note.isCompleted === "active" ? (<button className='w-4 h-4 border border-gray-300 rounded-full'
-          onClick={() => { completedFunc(note.noteId) }}
+          onClick={() => completedFunc(note.noteId, note.isCompleted)}
+
         >
 
         </button>) : (note.isCompleted === "completed" ? <button className='w-4 h-4 text-xs flex items-center justify-center text-green-600'>

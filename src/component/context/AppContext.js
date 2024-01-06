@@ -146,6 +146,21 @@ export const AppProvider = ({ children }) => {
     });
   }
 
+  const partnerKabul = async (e) => {
+    e.preventDefault();
+    postOneNote(note);
+    const updatePawValue = await userService.updateUserPaw(userId, 1);
+    sessionStorage.setItem('userPaw', updatePawValue);
+    setUserPaw(updatePawValue);
+    setNote({
+      noteId: 0,
+      userId: userId,
+      text: "",
+      date: "",
+      isCompleted: "active"
+    });
+  }
+
   const clearFunc = () => {
     setNote({
       noteId: 0,
@@ -165,14 +180,20 @@ export const AppProvider = ({ children }) => {
     }
   };
 
-  const completedFunc = async (id) => {
+  const completedFunc = async (id, isCompleted) => {
     const note = {
       isCompleted: "completed"
     }
     putOneNote(id, note);
-    const updatePawValue = await userService.updateUserPaw(userId, 3);
-    sessionStorage.setItem('userPaw', updatePawValue);
-    setUserPaw(updatePawValue);
+    if (isCompleted === "active") {
+      const updatePawValue = await userService.updateUserPaw(userId, 3);
+      sessionStorage.setItem('userPaw', updatePawValue);
+      setUserPaw(updatePawValue);
+    } else {
+      const updatePawValue = await userService.updateUserPaw(userId, 30);
+      sessionStorage.setItem('userPaw', updatePawValue);
+      setUserPaw(updatePawValue);
+    }
   }
 
   const archivedFunc = async (id) => {
@@ -224,7 +245,8 @@ export const AppProvider = ({ children }) => {
     completedFunc,
     archivedFunc,
     activedFunc,
-    partnerTask
+    partnerTask,
+    partnerKabul
   };
 
   return <AppContext.Provider value={values}>{children}</AppContext.Provider>;

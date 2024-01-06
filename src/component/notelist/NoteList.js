@@ -375,7 +375,7 @@ function NoteList() {
             <div className="w-4/6 h-12 flex items-center text-sm">{task.partnerText}</div>
             <div className="w-1/6 h-12 flex items-center justify-center">
               <button onClick={() => partnersClick(task.partnerText)} className='w-24 h-8 bg-[#424bf7] text-white text-sm rounded-md'>Kabul Et</button>
-              {partnerClick ? <button onClick={partnersConf} className='bg-black text-white'>Onay</button> : ""}
+              {partnerClick ? <button onClick={partnersConf} className='bg-black w-8 h-8 rounded-full flex items-center justify-center text-sm text-white'><i class="fa-solid fa-check"></i></button> : ""}
             </div>
           </div>)}
         </div>

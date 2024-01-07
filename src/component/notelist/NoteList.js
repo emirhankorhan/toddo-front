@@ -374,7 +374,10 @@ function NoteList() {
           <div className='w-full h-12 flex items-center justify-end'>
             <button onClick={exitPartnerTask} className="w-8 h-8 mr-4 ease-in duration-100 hover:text-white cursor-pointer flex items-center justify-center hover:bg-red-600 rounded-full text-black"><i class="fa-solid fa-xmark"></i></button>
           </div>
-          {partnerTask.map((task, index) => <div key={index} className='w-full h-12 flex border-b border-gray-200'>
+         {partnerTask.length === 0 ? <div className='w-full h-48'>
+          <div className='w-full h-36 bg-undraw_empty bg-xxx bg-no-repeat bg-bottom'></div>
+          <div className="w-full h-12 flex items-end justify-center font-bold text-sm">Burası bomboş...</div>
+         </div> :  partnerTask.map((task, index) => <div key={index} className='w-full h-12 flex border-b border-gray-200'>
           <div className="h-12 w-1/6 flex">
           <div className='h-12 w-12 flex text-lg text-[#6763fe] justify-end items-center'><i class="fa-solid fa-paw"></i></div>
             <div className='h-12 w-8 flex text-sm font-bold text-gray-700 justify-center items-center'>{task.howPaw}</div>

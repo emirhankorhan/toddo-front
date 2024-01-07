@@ -17,9 +17,7 @@ export const AppProvider = ({ children }) => {
   const [taskType, setTaskType] = useState(["active", "partner"]);
   const [filteredNotes, setFilteredNotes] = useState([]);
   const [partnerTask, setPartnerTask] = useState([
-    {id: 1,
-    partnerText: "ıdjs9ujds",
-  howPaw: 30}
+   
   ]);
 
   const [userId, setUserId] = useState(0);
@@ -119,12 +117,21 @@ export const AppProvider = ({ children }) => {
 
   const clickFunc = async (e) => {
     e.preventDefault();
+    e.target.disabled = true;
+  
     if (note.text.trim().length !== 0) {
       postOneNote(note);
       const updatePawValue = await userService.updateUserPaw(userId, 1);
       sessionStorage.setItem('userPaw', updatePawValue);
       setUserPaw(updatePawValue);
     }
+  
+    // 1 saniye sonra butonu tekrar etkinleştir
+    setTimeout(() => {
+      e.target.disabled = false;
+    }, 1000);
+  
+    // Formu temizle
     setNote({
       noteId: 0,
       userId: userId,
@@ -132,11 +139,8 @@ export const AppProvider = ({ children }) => {
       date: "",
       isCompleted: "active"
     });
-
-
-
-
   }
+  
 
 
   const clickChange = (e) => {

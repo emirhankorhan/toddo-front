@@ -4,7 +4,17 @@ module.exports = {
     "./src/**/*.js",
   ],
   theme: {
-    extend: {},
+    backgroundSize: {
+      'auto': 'auto',
+      'cover': 'cover',
+      'contain': 'contain',
+      'xxx': '25%'
+    },
+    extend: {
+      backgroundImage: {
+        'undraw_empty': "url('/undraw_empty.svg')",
+      }
+    },
   },
   plugins: [],
 }

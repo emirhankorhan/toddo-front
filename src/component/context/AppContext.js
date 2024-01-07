@@ -11,13 +11,7 @@ export const AppProvider = ({ children }) => {
   const noteService = useMemo(() => new NoteService(), []);
   const partnersService = useMemo(() => new PartnersService(), []);
   const userService = new UserService();
-  const [notes, setNotes] = useState([{
-    noteId: 0,
-    userId: 0,
-    text: "awdawda",
-    date: "",
-    isCompleted: "active"
-  }]);
+  const [notes, setNotes] = useState([]);
 
   const [userPaw, setUserPaw] = useState(sessionStorage.getItem('userPaw'));
   const [taskType, setTaskType] = useState(["active", "partner"]);

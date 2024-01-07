@@ -176,7 +176,7 @@ export const AppProvider = ({ children }) => {
 
   const deleteFunc = async (id) => {
     deleteOneNote(id);
-    if (taskType === "active") {
+    if (taskType.includes("active")) {
       const updatePawValue = await userService.updateUserPaw(userId, -1);
       sessionStorage.setItem('userPaw', updatePawValue);
       setUserPaw(updatePawValue);

@@ -74,7 +74,7 @@ function Note({ note, deleteFunc, completedFunc, activedFunc, archivedFunc, task
             role="menu"
           >
             <div className="p-2 border-b border-gray-700">
-              {note.isCompleted === "active" ? <button
+              {note.isCompleted === "active" || note.isCompleted === "partner" ? <button
                 onClick={() => {
                   completedFunc(note.noteId);
                   setOptionsMenu(false)
@@ -89,7 +89,7 @@ function Note({ note, deleteFunc, completedFunc, activedFunc, archivedFunc, task
 
 
 
-              {note.isCompleted === "active" ? <button
+              {note.isCompleted === "active" || note.isCompleted === "partner" ? <button
                 className="w-full h-9 flex items-center rounded-lg pl-4 text-sm text-gray-200 hover:bg-[#15161a]">
                 Görevi Düzenle
               </button> : <button
@@ -98,7 +98,7 @@ function Note({ note, deleteFunc, completedFunc, activedFunc, archivedFunc, task
                 Görevi Düzenle
               </button>}
 
-              {note.isCompleted === "active" ? <button
+              {note.isCompleted === "active" || note.isCompleted === "partner" ? <button
                 onClick={() => {
                   archivedFunc(note.noteId);
                   setOptionsMenu(false)

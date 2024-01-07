@@ -3,6 +3,7 @@ import Note from "../note/Note"
 import AppContext from '../context/AppContext';
 import "./notelist.css"
 import { useNavigate } from 'react-router-dom';
+import text from './text';
 
 function NoteList() {
 
@@ -32,6 +33,19 @@ function NoteList() {
   const today = new Date().toISOString().slice(0, 10);
   const [partnerTaskDiv, setPartnerTaskDiv] = useState(false);
   const [partnerClick, setPartnerClick] = useState(false);
+  const [currentSoz, setCurrentSoz] = useState(null);
+
+  useEffect(() => {
+    const today = new Date();
+    const dayOfMonth = today.getDate();
+
+    const selectedSoz = text.find((soz) => soz.id === dayOfMonth);
+
+    if (selectedSoz) {
+      setCurrentSoz(selectedSoz);
+    }
+  }, []);
+
 
   
 
@@ -257,6 +271,7 @@ function NoteList() {
           {taskType.includes("active") ? <button className='py-2 px-4 bg-[#282736] border border-[#373580] rounded-md text-sm mr-4 text-[#6763fe]'>Etkin</button> : <button onClick={() => effectiveButton(["active", "partner"])} className='py-2 px-4 bg-[#1e1f24] rounded-md text-sm mr-4 border border-[#1e1f24] text-white'>Etkin</button>}
           {taskType.includes("completed") ? <button className='py-2 px-4 bg-[#282736] border border-[#373580] rounded-md text-sm mr-4 text-[#6763fe]'>Tamamlandı</button> : <button onClick={() => effectiveButton(["completed"])} className='py-2 px-4 bg-[#1e1f24] rounded-md text-sm mr-4 border border-[#1e1f24] text-white'>Tamamlandı</button>}
           {taskType.includes("archived") ? <button className='py-2 px-4 bg-[#282736] border border-[#373580] rounded-md text-sm mr-4 text-[#6763fe]'>Arşiv</button> : <button onClick={() => effectiveButton(["archived"])} className='py-2 px-4 bg-[#1e1f24] rounded-md text-sm mr-4 border border-[#1e1f24] text-white'>Arşiv</button>}
+          <div className="py-2 px-4 bg-[#ffffff] rounded-md text-sm mr-4 border border-[#1e1f24] font-bold text-black"><i class="fa-solid fa-quote-left"></i> &nbsp;{currentSoz?.text} &nbsp; <i class="fa-solid fa-quote-right"></i></div>
         </div>
 
 

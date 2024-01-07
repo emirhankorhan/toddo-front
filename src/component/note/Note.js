@@ -64,7 +64,7 @@ function Note({ note, deleteFunc, completedFunc, activedFunc, archivedFunc, task
 
 
             <button id={`dropdownButton${note?.noteId}`} onClick={optionsMenuFunc} className="h-full p-2 flex items-center text-xs justify-center text-gray-400 hover:text-gray-300">
-              <i class="fa-solid fa-ellipsis-vertical"></i>
+            <i class="fa-solid fa-caret-down"></i>
             </button>
           </div>
 

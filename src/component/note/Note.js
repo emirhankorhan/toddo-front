@@ -6,7 +6,7 @@ function Note({ note, deleteFunc, completedFunc, activedFunc, archivedFunc, task
 
   let formattedDate;
   const today = new Date().toISOString().slice(0, 10);
-  const [deleteConfDiv, setDeleteConfDiv] = useState(true)
+  const [deleteConfDiv, setDeleteConfDiv] = useState(false)
 
   const [optionsMenu, setOptionsMenu] = useState(false);
   const optionsMenuFunc = () => {

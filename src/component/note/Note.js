@@ -34,7 +34,10 @@ function Note({ note, deleteFunc, completedFunc, activedFunc, archivedFunc, task
     formattedDate = new Intl.DateTimeFormat('tr-TR', options).format(date);
   }
 
-  const deleteConfirm = () => setDeleteConfDiv(true);
+  const deleteConfirm = () => {
+    setDeleteConfDiv(true)
+    setOptionsMenu(false)
+  }
   const deleteCancel = () => setDeleteConfDiv(false);
 
   return (
@@ -153,10 +156,10 @@ function Note({ note, deleteFunc, completedFunc, activedFunc, archivedFunc, task
                 <div className='w-96 h-16 flex justify-center items-end font-bold text-sm'>Bu notu silmek istediğine emin misin?</div>
                 <div className='w-96 h-24 flex items-center justify-evenly'>
                   <button className='w-28 rounded-md text-sm font-bold text-white h-10 bg-[#6763fe]'
-                   onClick={() => {
-                    deleteFunc(note.noteId);
-                    setOptionsMenu(false)
-                  }}>Evet</button>
+                    onClick={() => {
+                      deleteFunc(note.noteId);
+                      setOptionsMenu(false)
+                    }}>Evet</button>
                   <button onClick={deleteCancel} className='w-28 rounded-md text-sm font-bold text-white h-10 bg-black'>Hayır</button>
                 </div>
               </div>

@@ -6,7 +6,8 @@ function Note({ note, deleteFunc, completedFunc, activedFunc, archivedFunc, task
 
   let formattedDate;
   const today = new Date().toISOString().slice(0, 10);
-  
+  const [deleteConfDiv, setDeleteConfDiv] = useState(true)
+
   const [optionsMenu, setOptionsMenu] = useState(false);
   const optionsMenuFunc = () => {
     setOptionsMenu((prevOptions) => !prevOptions);
@@ -32,6 +33,9 @@ function Note({ note, deleteFunc, completedFunc, activedFunc, archivedFunc, task
     const options = { day: 'numeric', month: 'long', year: 'numeric' };
     formattedDate = new Intl.DateTimeFormat('tr-TR', options).format(date);
   }
+
+  const deleteConfirm = () => setDeleteConfDiv(true);
+  const deleteCancel = () => setDeleteConfDiv(false);
 
   return (
     <div className='w-3/4 bg-[#1e1f24] hover:bg-[#24252b] duration-300 h-auto flex rounded-md mb-2'>
@@ -64,7 +68,7 @@ function Note({ note, deleteFunc, completedFunc, activedFunc, archivedFunc, task
 
 
             <button id={`dropdownButton${note?.noteId}`} onClick={optionsMenuFunc} className="h-full p-2 flex items-center text-xs justify-center text-gray-400 hover:text-gray-300">
-            <i class="fa-solid fa-caret-down"></i>
+              <i class="fa-solid fa-caret-down"></i>
             </button>
           </div>
 
@@ -122,12 +126,7 @@ function Note({ note, deleteFunc, completedFunc, activedFunc, archivedFunc, task
             <div className="p-2">
 
               <button
-
-                onClick={() => {
-                  deleteFunc(note.noteId);
-                  setOptionsMenu(false)
-                }}
-
+                onClick={deleteConfirm}
                 className="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-[#312222]"
               >
                 <svg
@@ -148,6 +147,21 @@ function Note({ note, deleteFunc, completedFunc, activedFunc, archivedFunc, task
               </button>
             </div>
           </div> : null}
+          {
+            deleteConfDiv ? <div className='w-full h-full bg-black/60 fixed top-0 left-0 flex justify-center items-center'>
+              <div className="w-96 h-40 bg-white rounded-md">
+                <div className='w-96 h-16 flex justify-center items-end font-bold text-sm'>Bu notu silmek istediğine emin misin?</div>
+                <div className='w-96 h-24 flex items-center justify-evenly'>
+                  <button className='w-28 rounded-md text-sm font-bold text-white h-10 bg-[#6763fe]'
+                   onClick={() => {
+                    deleteFunc(note.noteId);
+                    setOptionsMenu(false)
+                  }}>Evet</button>
+                  <button onClick={deleteCancel} className='w-28 rounded-md text-sm font-bold text-white h-10 bg-black'>Hayır</button>
+                </div>
+              </div>
+            </div> : ""
+          }
         </div>
       </div>
     </div>

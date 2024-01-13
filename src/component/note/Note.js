@@ -43,11 +43,11 @@ function Note({ note, deleteFunc, completedFunc, activedFunc, archivedFunc, task
   return (
     <div className='w-3/4 bg-[#1e1f24] hover:bg-[#24252b] duration-300 h-auto flex rounded-md mb-2'>
       <div className='w-[8%] h-auto flex items-center justify-center'>
-        {note.isCompleted === "active" || note.isCompleted === "partner" ? (<button className='w-4 h-4 border border-gray-300 rounded-full'
+        {note.isCompleted === "active" || note.isCompleted === "partner" ? (<button className='group/item w-4 h-4 border flex items-center justify-center border-gray-300 rounded-full hover:border-[#6763fe] hover:bg-[#282736]'
           onClick={() => completedFunc(note.noteId, note.isCompleted)}
 
         >
-
+          <i class="fa-solid fa-check group/edit invisible group-hover/item:visible text-white text-[9px]"></i>
         </button>) : (note.isCompleted === "completed" ? <button className='w-4 h-4 text-xs flex items-center justify-center text-green-600'>
           <i class="fa-solid fa-check"></i>
         </button> : <button className='w-4 h-4 text-xs flex items-center justify-center text-[#6763fe]'>

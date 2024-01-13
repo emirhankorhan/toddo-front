@@ -47,7 +47,7 @@ function Note({ note, deleteFunc, completedFunc, activedFunc, archivedFunc, task
           onClick={() => completedFunc(note.noteId, note.isCompleted)}
 
         >
-          <i class="fa-solid fa-check group/edit invisible group-hover/item:visible text-white text-[9px]"></i>
+          <i class="fa-solid fa-check group/edit invisible group-hover/item:visible text-white text-[8px]"></i>
         </button>) : (note.isCompleted === "completed" ? <button className='w-4 h-4 text-xs flex items-center justify-center text-green-600'>
           <i class="fa-solid fa-check"></i>
         </button> : <button className='w-4 h-4 text-xs flex items-center justify-center text-[#6763fe]'>

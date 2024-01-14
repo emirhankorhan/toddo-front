@@ -34,6 +34,7 @@ function NoteList() {
   const [partnerTaskDiv, setPartnerTaskDiv] = useState(false);
   const [partnerClick, setPartnerClick] = useState(false);
   const [currentSoz, setCurrentSoz] = useState(null);
+  const [prizePoolDiv, setPrizePoolDiv] = useState(false);
 
   useEffect(() => {
     const today = new Date();
@@ -94,6 +95,14 @@ function NoteList() {
     partnerKabul();
    };
 
+   const displayPrizePool = () => {
+    setPrizePoolDiv(true);
+   }
+
+   const exitPrizePoolDiv = () => {
+    setPrizePoolDiv(false);
+   }
+
 
 
 
@@ -102,7 +111,7 @@ function NoteList() {
       <div class="flex h-screen flex-col justify-between w-1/5 bg-[#1e1f24]">
         <div class="px-4 py-6">
           <div className='flex h-10 w-full'>
-          <div class="flex h-10 w-20 items-center justify-center rounded-lg bg-gray-100 text-xs">
+          <div onClick={displayPrizePool} class="flex h-10 w-20 items-center justify-center rounded-lg bg-gray-100 text-xs select-none cursor-pointer">
             <div className='h-10 w-8 flex text-lg text-[#6763fe] justify-center items-center'><i class="fa-solid fa-paw"></i></div>
             <div className='h-10 w-8 flex text-sm font-bold text-gray-700 justify-center items-center'>{userPaw == null || NaN ? paww : userPaw}</div>
           </div>
@@ -329,30 +338,7 @@ function NoteList() {
               </div>
             </div>
           </div>
-          {/* <input
-                        className='text-input'
-                        type="text"
-                        id='text'
-                        name='text'
-                        placeholder='Metin giriniz!'
-                        value={note?.text}
-                        onChange={clickChange}
-                    />
-
-                    <input
-                    className='date-input'
-                    type="date"
-                    id='date'
-                    name='date'
-                    value={note?.date}
-                    onChange={clickChange}
-
-                />
-
-                    <button className='text-[#da5050] bg-orange-400' onClick={clickFunc}>Ekle</button> */}
-
         </div>
-
         <div className='h-full w-full flex items-center overflow-y-scroll justify-start flex-col '>
           {notes
             .filter((note) => note.date === today)
@@ -403,6 +389,17 @@ function NoteList() {
               {partnerClick ? <button onClick={partnersConf} className='bg-black w-8 h-8 rounded-full flex items-center justify-center text-sm text-white'><i class="fa-solid fa-check"></i></button> : ""}
             </div>
           </div>)}
+        </div>
+      </div> : ""}
+
+      {prizePoolDiv ? <div className='w-full h-full bg-black/70 flex items-center justify-center fixed top-0 left-0'>
+        <div className='w-1/3 h-1/3 bg-white rounded-lg'>
+          <div className='w-full h-12 flex items-center justify-end'>
+            <button onClick={exitPrizePoolDiv} className="w-8 h-8 mr-4 ease-in duration-100 hover:text-white cursor-pointer flex items-center justify-center hover:bg-red-600 rounded-full text-black"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+          <div className='w-full h-4 flex items-center justify-center text-sm font-semibold'>Büyük Ödül Havuzu</div>
+          <div className="w-full h-24 flex items-center justify-center font-semibold text-8xl">0₺</div>
+          <div className="w-full h-8 flex items-center justify-center text-xs font-semibold">Büyük ödülü elde etmek için gereken &nbsp; <i class="fa-solid fa-paw text-[#6763fe]"></i> &nbsp; sayısı 10.000'dir.</div>
         </div>
       </div> : ""}
     </div>

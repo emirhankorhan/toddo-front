@@ -339,7 +339,7 @@ function NoteList() {
             </div>
           </div>
         </div>
-        <div className='h-full w-full flex items-center overflow-y-scroll justify-start flex-col '>
+        <div className='h-full w-full flex items-center overflow-y-scroll justify-start flex-col pb-20'>
           {notes
             .filter((note) => note.date === today)
             .map((nt, index) =>
